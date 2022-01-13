@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Blog.Application.Users.Queries;
+
 namespace Blog.Controllers.Accounts
 {
     public class AccountController : Controller
@@ -18,7 +20,7 @@ namespace Blog.Controllers.Accounts
 
         [HttpGet]
         public IActionResult Register()
-        {
+        {  
             return View();
         }
 
@@ -33,5 +35,27 @@ namespace Blog.Controllers.Accounts
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginUserQuery loginUser)
+        {
+            var result = await _mediator.Send(loginUser);
+
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Home");
+            if (result.RequiresTwoFactor)
+                return RedirectToAction(nameof(TwoFactor));
+            TempData["Message"] = "User Notfound";
+            return View(loginUser);
+        }
+
+        public IActionResult TwoFactor()
+        {
+            return View();
+        }
     }
 }

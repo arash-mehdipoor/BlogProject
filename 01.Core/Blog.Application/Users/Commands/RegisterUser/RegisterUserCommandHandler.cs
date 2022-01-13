@@ -2,6 +2,7 @@
 using Blog.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Serilog.Events;
 using System;
 using System.Collections.Generic;
 
@@ -29,11 +30,14 @@ namespace Blog.Application.Users.Commands.RegisterUser
 
             var result = _userManager.CreateAsync(user, request.Password).Result;
             if (result.Succeeded)
+            {
+                Serilog.Log.Information($"A new user has been added to the website: {user.UserName}");
                 return new Response()
                 {
                     IsSuccess = true,
                     SuccessMessage = "Registration completed successfully"
                 };
+            }
             else
             {
                 string messge = "";
@@ -41,6 +45,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
                 {
                     messge += item.Description + Environment.NewLine;
                 }
+                Serilog.Log.Information($"Failed Register/ Error : {messge}");
                 return new Response() { ErrorMessage = messge };
             }
         }

@@ -18,7 +18,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
                 .EmailAddress().WithMessage("Invalid email format."); 
             RuleFor(u => u.Password).NotEmpty().WithMessage("Can Not Be Null");
             RuleFor(u => u.ConfirmPassword).NotEmpty().WithMessage("Can Not Be Null");
-            RuleFor(u => u.Password).Equal(u => u.ConfirmPassword).WithMessage("The password must be the same as repeating the password");
+            RuleFor(u => u.ConfirmPassword).Equal(u => u.Password).WithMessage("The password must be the same as repeating the password");
         }
     }
 }
