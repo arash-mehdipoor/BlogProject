@@ -44,7 +44,6 @@ namespace Blog.Controllers.Accounts
         public async Task<IActionResult> Login(LoginUserQuery loginUser)
         {
             var result = await _mediator.Send(loginUser);
-
             if (result.Succeeded)
                 return RedirectToAction("Index", "Home");
             if (result.RequiresTwoFactor)

@@ -16,6 +16,8 @@ using FluentValidation.AspNetCore;
 using Blog.Domain.Users;
 using Blog.Domain.Roles;
 using Microsoft.AspNetCore.Identity;
+using Blog.Domain.Articles;
+using Blog.Infrastructure.Articles;
 
 namespace Blog
 {
@@ -51,6 +53,7 @@ namespace Blog
                 options.UseSqlServer(Configuration.GetConnectionString("BlogDb"));
             });
             services.AddMediatR(typeof(RegisterUserCommand).Assembly);
+            services.AddTransient<IArticleRepasitory, UserRepasitory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

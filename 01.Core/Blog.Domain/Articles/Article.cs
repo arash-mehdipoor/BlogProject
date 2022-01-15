@@ -1,20 +1,18 @@
-﻿using Blog.Domain.Common;
-using Blog.Domain.Common.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Blog.Domain.Common.Attributes;
+using Blog.Domain.Common.Entities;
+using Blog.Domain.Users;
 
 namespace Blog.Domain.Articles
 {
     [Audit]
-    public class Article
+    public class Article: Entity
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
         public string Image { get; set; }
         public bool Status { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

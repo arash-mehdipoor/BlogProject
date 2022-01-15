@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Domain.Users
+namespace Blog.Domain.Articles
 {
-    public interface IUserRepasitory : IRepasitory<User>
+    public interface IArticleRepasitory : IRepasitory<Article>
     {
     }
 }

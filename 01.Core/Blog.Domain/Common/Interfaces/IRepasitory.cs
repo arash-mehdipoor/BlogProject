@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Domain.Common.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Domain.Common.Interfaces
 {
-    public interface IRepasitory<TEntity> where TEntity : class, new()
+    public interface IRepasitory<TEntity> where TEntity : Entity, new()
     {
         TEntity Get(int Id);
         IEnumerable<TEntity> GetAll();

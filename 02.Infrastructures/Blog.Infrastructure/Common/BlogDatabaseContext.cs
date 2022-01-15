@@ -2,7 +2,6 @@
 using Blog.Domain.Common.Attributes;
 using Blog.Domain.Roles;
 using Blog.Domain.Users;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,6 +21,8 @@ namespace Blog.Infrastructure.Common
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlogDatabaseContext).Assembly);
+
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 if (entityType.ClrType.GetCustomAttributes(typeof(AuditAttribute), true).Length > 0)
