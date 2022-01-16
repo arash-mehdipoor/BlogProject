@@ -1,5 +1,7 @@
 ﻿using Blog.Domain.Articles;
+using Blog.Domain.Users;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System;
 
 namespace Blog.Application.Articles.Commands.CreateArticle
@@ -22,7 +24,8 @@ namespace Blog.Application.Articles.Commands.CreateArticle
                 Title = request.Title,
                 Body = request.Body,
                 Status = request.Status,
-                Image = request.Image
+                Image = request.Image,
+                UserId = request.UserId
             };
             _article.Add(article);
             return article.Id;

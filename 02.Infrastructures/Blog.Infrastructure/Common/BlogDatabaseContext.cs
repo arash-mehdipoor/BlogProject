@@ -21,6 +21,7 @@ namespace Blog.Infrastructure.Common
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlogDatabaseContext).Assembly);
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())

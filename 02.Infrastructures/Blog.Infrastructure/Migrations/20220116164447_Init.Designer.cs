@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Infrastructure.Migrations
 {
     [DbContext(typeof(BlogDatabaseContext))]
-    [Migration("20220115074152_AddArticle")]
-    partial class AddArticle
+    [Migration("20220116164447_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,7 +38,7 @@ namespace Blog.Infrastructure.Migrations
                     b.Property<DateTime>("InsertTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 1, 15, 11, 11, 51, 495, DateTimeKind.Local).AddTicks(5241));
+                        .HasDefaultValue(new DateTime(2022, 1, 16, 20, 14, 46, 996, DateTimeKind.Local).AddTicks(532));
 
                     b.Property<bool>("IsRemoved")
                         .ValueGeneratedOnAdd()
@@ -59,15 +59,12 @@ namespace Blog.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
                 });
@@ -278,7 +275,7 @@ namespace Blog.Infrastructure.Migrations
                 {
                     b.HasOne("Blog.Domain.Users.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

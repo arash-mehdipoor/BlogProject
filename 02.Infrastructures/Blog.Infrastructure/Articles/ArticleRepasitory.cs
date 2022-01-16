@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Blog.Infrastructure.Articles
 {
-    public class UserRepasitory : EfRepository<Article>, IArticleRepasitory
+    public class ArticleRepasitory : EfRepository<Article>, IArticleRepasitory
     {
-        public UserRepasitory(BlogDatabaseContext dbContext) : base(dbContext)
+        public ArticleRepasitory(BlogDatabaseContext dbContext) : base(dbContext)
         {
         }
     }

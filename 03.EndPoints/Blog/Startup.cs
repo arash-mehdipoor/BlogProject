@@ -53,7 +53,7 @@ namespace Blog
                 options.UseSqlServer(Configuration.GetConnectionString("BlogDb"));
             });
             services.AddMediatR(typeof(RegisterUserCommand).Assembly);
-            services.AddTransient<IArticleRepasitory, UserRepasitory>();
+            services.AddTransient<IArticleRepasitory, ArticleRepasitory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

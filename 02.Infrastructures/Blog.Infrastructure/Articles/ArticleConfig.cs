@@ -1,4 +1,5 @@
 ﻿using Blog.Domain.Articles;
+using Blog.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -15,6 +16,8 @@ namespace Blog.Infrastructure.Articles
         {
             builder.Property(a => a.Title).HasMaxLength(150).IsRequired();
             builder.Property(a => a.Body).IsRequired();
+
+            builder.HasOne(u => u.User).WithMany().HasForeignKey(u => u.UserId);
         }
     }
 }
