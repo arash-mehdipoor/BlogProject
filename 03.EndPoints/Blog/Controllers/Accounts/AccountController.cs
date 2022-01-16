@@ -20,7 +20,7 @@ namespace Blog.Controllers.Accounts
 
         [HttpGet]
         public IActionResult Register()
-        {  
+        {
             return View();
         }
 
@@ -35,9 +35,9 @@ namespace Blog.Controllers.Accounts
             return View();
         }
 
-        public IActionResult Login()
+        public IActionResult Login(string ReturnUrl = "/")
         {
-            return View();
+            return View(new LoginUserQuery() { ReturnUrl = ReturnUrl });
         }
 
         [HttpPost]
@@ -45,7 +45,7 @@ namespace Blog.Controllers.Accounts
         {
             var result = await _mediator.Send(loginUser);
             if (result.Succeeded)
-                return RedirectToAction("Index", "Home");
+                return LocalRedirect(loginUser.ReturnUrl);
             if (result.RequiresTwoFactor)
                 return RedirectToAction(nameof(TwoFactor));
             TempData["Message"] = "User Notfound";
