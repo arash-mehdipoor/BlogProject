@@ -7,9 +7,12 @@ using MediatR;
 using Blog.Application.Articles.Commands.CreateArticle;
 using Microsoft.AspNetCore.Identity;
 using Blog.Domain.Users;
+using Microsoft.AspNetCore.Authorization;
 
-namespace Blog.Controllers.Blogs
+namespace Blog.Areas.Admin.Controllers.Articles
 {
+    [Area("Admin")]
+    [Authorize]
     public class ArticleController : Controller
     {
         private readonly IMediator _mediator;
