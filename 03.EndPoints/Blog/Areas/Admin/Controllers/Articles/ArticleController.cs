@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Blog.Areas.Admin.Controllers.Articles
 {
-    [Area("Admin")]
     [Authorize]
+    [Area("Admin")]
     public class ArticleController : Controller
     {
         private readonly IMediator _mediator;
@@ -23,6 +23,7 @@ namespace Blog.Areas.Admin.Controllers.Articles
             _userManager = userManager;
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();

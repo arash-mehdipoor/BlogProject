@@ -18,6 +18,8 @@ using Blog.Domain.Roles;
 using Microsoft.AspNetCore.Identity;
 using Blog.Domain.Articles;
 using Blog.Infrastructure.Articles;
+using AutoMapper;
+using Blog.Application.Articles.Commands.CreateArticle;
 
 namespace Blog
 {
@@ -54,6 +56,7 @@ namespace Blog
             });
             services.AddMediatR(typeof(RegisterUserCommand).Assembly);
             services.AddTransient<IArticleRepasitory, ArticleRepasitory>();
+            services.AddAutoMapper(typeof(CreateArticleMappingProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,16 +83,14 @@ namespace Blog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                 name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+               
 
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllerRoute(
-                      name: "areas",
-                      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                    );
-                });
             });
         }
     }
