@@ -2,8 +2,10 @@
 using Blog.Domain.Articles;
 using Blog.Domain.Users;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Security.Claims;
 
 namespace Blog.Application.Articles.Commands.CreateArticle
 {
@@ -12,16 +14,26 @@ namespace Blog.Application.Articles.Commands.CreateArticle
     public class CreateArticleCommandHandler : RequestHandler<CreateArticleCommand, int>
     {
         private readonly IArticleRepasitory _article;
+        private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _accessor;
+        public ClaimsPrincipal User => _accessor.HttpContext.User;
 
-        public CreateArticleCommandHandler(IArticleRepasitory article, IMapper mapper)
+        public CreateArticleCommandHandler(IArticleRepasitory article,
+            IMapper mapper,
+            IHttpContextAccessor accessor,
+            UserManager<User> userManager)
         {
             _article = article;
             _mapper = mapper;
+            _accessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+            _userManager = userManager;
         }
 
         protected override int Handle(CreateArticleCommand request)
         {
+            var user = _userManager.GetUserAsync(User).Result;
+            request.UserId = user.Id;
             var article = _mapper.Map<Article>(request);
             _article.Add(article);
             return article.Id;

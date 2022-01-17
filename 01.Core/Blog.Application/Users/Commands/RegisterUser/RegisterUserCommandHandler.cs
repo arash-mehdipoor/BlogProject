@@ -10,7 +10,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
 {
 
 
-    public class RegisterUserCommandHandler : RequestHandler<RegisterUserCommand, Response>
+    public class RegisterUserCommandHandler : RequestHandler<RegisterUserCommand, ResponseDto>
     {
         private readonly UserManager<User> _userManager;
         public RegisterUserCommandHandler(UserManager<User> userManager)
@@ -18,7 +18,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
             _userManager = userManager;
         }
 
-        protected override Response Handle(RegisterUserCommand request)
+        protected override ResponseDto Handle(RegisterUserCommand request)
         {
             var user = new User
             {
@@ -32,11 +32,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
             if (result.Succeeded)
             {
                 Serilog.Log.Information($"A new user has been added to the website: {user.UserName}");
-                return new Response()
-                {
-                    IsSuccess = true,
-                    SuccessMessage = "Registration completed successfully"
-                };
+                return new ResponseDto(true, "Registration completed successfully");
             }
             else
             {
@@ -46,7 +42,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
                     messge += item.Description + Environment.NewLine;
                 }
                 Serilog.Log.Information($"Failed Register/ Error : {messge}");
-                return new Response() { ErrorMessage = messge };
+                return new ResponseDto(true, messge);
             }
         }
     }

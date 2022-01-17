@@ -15,12 +15,10 @@ namespace Blog.Areas.Admin.Controllers.Articles
     [Area("Admin")]
     public class ArticleController : Controller
     {
-        private readonly IMediator _mediator;
-        private readonly UserManager<User> _userManager;
+        private readonly IMediator _mediator; 
         public ArticleController(IMediator mediator, UserManager<User> userManager)
         {
-            _mediator = mediator;
-            _userManager = userManager;
+            _mediator = mediator; 
         }
 
         [HttpGet]
@@ -32,8 +30,6 @@ namespace Blog.Areas.Admin.Controllers.Articles
         [HttpPost]
         public async Task<IActionResult> Create(CreateArticleCommand articleCommand)
         {
-            var user = await _userManager.GetUserAsync(User);
-            articleCommand.UserId = user.Id;
             var result = await _mediator.Send(articleCommand);
             return View();
         }

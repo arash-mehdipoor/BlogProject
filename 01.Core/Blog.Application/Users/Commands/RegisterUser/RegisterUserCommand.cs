@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Application.Users.Commands.RegisterUser
 {
-    public class RegisterUserCommand : IRequest<Response>
+    public class RegisterUserCommand : IRequest<ResponseDto>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
