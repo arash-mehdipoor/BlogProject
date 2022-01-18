@@ -66,5 +66,10 @@ namespace Blog.Controllers.Accounts
         {
             return View();
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

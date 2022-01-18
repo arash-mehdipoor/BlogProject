@@ -41,7 +41,7 @@ namespace Blog
             services.ConfigureApplicationCookie(options =>
             {
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-                options.LoginPath = "/account/login";
+                options.LoginPath = "/Account/login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });

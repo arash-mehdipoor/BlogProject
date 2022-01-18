@@ -33,5 +33,11 @@ namespace Blog.Areas.Admin.Controllers.Articles
             var result = await _mediator.Send(articleCommand);
             return View();
         }
+        [Authorize(Policy = "Author")]
+        public string AuthorAction()
+        {
+            return "OK";
+        }
+
     }
 }
