@@ -9,5 +9,6 @@ namespace Blog.Domain.Articles
 {
     public interface IArticleRepasitory : IRepasitory<Article>
     {
+        int GetArticleCountByUserId(string userId);
     }
 }

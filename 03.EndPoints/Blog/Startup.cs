@@ -20,6 +20,9 @@ using Blog.Domain.Articles;
 using Blog.Infrastructure.Articles;
 using AutoMapper;
 using Blog.Application.Articles.Commands.CreateArticle;
+using Microsoft.AspNetCore.Authorization;
+using Blog.Helpers.Articles;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Blog
 {
@@ -69,8 +72,12 @@ namespace Blog
                 {
                     policy.RequireClaim("Author");
                 });
+                //options.AddPolicy("GoldenAuthor", policy =>
+                //{
+                //    policy.Requirements.Add(new GoldenAuthorRequerment(10));
+                //});
             });
-           
+
             services.AddDbContext<BlogDatabaseContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("BlogDb"));
@@ -78,10 +85,13 @@ namespace Blog
             services.AddMediatR(typeof(RegisterUserCommand).Assembly);
             services.AddTransient<IArticleRepasitory, ArticleRepasitory>();
             services.AddAutoMapper(typeof(CreateArticleMappingProfile));
+ 
+
+            //services.AddScoped<IClaimsTransformation, AddClaim>();
+            //services.AddSingleton<IAuthorizationHandler, GoldenAuthorRequermentHandler>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
