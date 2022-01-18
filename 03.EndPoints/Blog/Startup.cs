@@ -38,6 +38,14 @@ namespace Blog
             services.AddControllersWithViews().AddFluentValidation(fv =>
             fv.RegisterValidatorsFromAssemblyContaining<RegisterUserCommand>()); ;
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+                options.LoginPath = "/account/login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+
             services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -62,7 +70,7 @@ namespace Blog
                     policy.RequireClaim("Author");
                 });
             });
-
+           
             services.AddDbContext<BlogDatabaseContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("BlogDb"));
