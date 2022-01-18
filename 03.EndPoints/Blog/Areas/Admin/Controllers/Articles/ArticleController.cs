@@ -15,10 +15,10 @@ namespace Blog.Areas.Admin.Controllers.Articles
     [Area("Admin")]
     public class ArticleController : Controller
     {
-        private readonly IMediator _mediator; 
+        private readonly IMediator _mediator;
         public ArticleController(IMediator mediator, UserManager<User> userManager)
         {
-            _mediator = mediator; 
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -33,5 +33,11 @@ namespace Blog.Areas.Admin.Controllers.Articles
             var result = await _mediator.Send(articleCommand);
             return View();
         }
+        [Authorize(Policy = "Author")]
+        public string AuthorAction()
+        {
+            return "OK";
+        }
+
     }
 }

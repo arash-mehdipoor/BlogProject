@@ -55,6 +55,14 @@ namespace Blog
                 .AddEntityFrameworkStores<BlogDatabaseContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Author", policy =>
+                {
+                    policy.RequireClaim("Author");
+                });
+            });
+
             services.AddDbContext<BlogDatabaseContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("BlogDb"));
@@ -94,7 +102,7 @@ namespace Blog
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-               
+
 
             });
         }
