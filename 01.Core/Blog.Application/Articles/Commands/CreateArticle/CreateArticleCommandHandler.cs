@@ -35,10 +35,8 @@ namespace Blog.Application.Articles.Commands.CreateArticle
         {
             var user = _userManager.GetUserAsync(User).Result;
             request.UserId = user.Id;
+            request.UserName = user.UserName;
             var article = _mapper.Map<Article>(request);
-
-
-
             _article.Add(article);
 
             // Add Claim For User

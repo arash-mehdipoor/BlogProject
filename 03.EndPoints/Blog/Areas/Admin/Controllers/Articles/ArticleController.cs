@@ -8,6 +8,8 @@ using Blog.Application.Articles.Commands.CreateArticle;
 using Microsoft.AspNetCore.Identity;
 using Blog.Domain.Users;
 using Microsoft.AspNetCore.Authorization;
+using Blog.Application.Articles.Commands.EditArticle;
+using Blog.Application.Articles.Queries.GetArticleList;
 
 namespace Blog.Areas.Admin.Controllers.Articles
 {
@@ -22,6 +24,13 @@ namespace Blog.Areas.Admin.Controllers.Articles
         }
 
         [HttpGet]
+        public IActionResult Index(GetArticleListQuery getArticleList)
+        {
+            var articles = _mediator.Send(getArticleList).Result;
+            return View(articles);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -33,12 +42,19 @@ namespace Blog.Areas.Admin.Controllers.Articles
             var result = await _mediator.Send(articleCommand);
             return View();
         }
+        [HttpGet]
+        public IActionResult Edit(FindArticleQuery articleQuery)
+        {
+            var result = _mediator.Send(articleQuery).Result;
+            return View(result);
+        }
 
-        //[Authorize(Policy = "GoldenAuthor")]
-        //public string testGoldenAuthor()
-        //{
-        //    return "GoldenAuthor OK";
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditArticleCommand articleCommand)
+        {
+            var result = await _mediator.Send(articleCommand);
+            return View();
+        }
 
 
     }

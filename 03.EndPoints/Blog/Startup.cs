@@ -23,6 +23,7 @@ using Blog.Application.Articles.Commands.CreateArticle;
 using Microsoft.AspNetCore.Authorization;
 using Blog.Helpers.Articles;
 using Microsoft.AspNetCore.Authentication;
+using Blog.Application.Articles.Commands.EditArticle;
 
 namespace Blog
 {
@@ -72,6 +73,10 @@ namespace Blog
                 {
                     policy.RequireClaim("Author");
                 });
+                options.AddPolicy("IsBlogForUser", policy =>
+                {
+                    policy.AddRequirements(new BlogForUserRequirement());
+                });
                 //options.AddPolicy("GoldenAuthor", policy =>
                 //{
                 //    policy.Requirements.Add(new GoldenAuthorRequerment(10));
@@ -84,14 +89,15 @@ namespace Blog
             });
             services.AddMediatR(typeof(RegisterUserCommand).Assembly);
             services.AddTransient<IArticleRepasitory, ArticleRepasitory>();
-            services.AddAutoMapper(typeof(CreateArticleMappingProfile));
- 
+            services.AddAutoMapper(typeof(EditArticleMappingProfile));
+
 
             //services.AddScoped<IClaimsTransformation, AddClaim>();
             //services.AddSingleton<IAuthorizationHandler, GoldenAuthorRequermentHandler>();
+            services.AddSingleton<IAuthorizationHandler, IsBlogForUserAuthorization>();
         }
 
-         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

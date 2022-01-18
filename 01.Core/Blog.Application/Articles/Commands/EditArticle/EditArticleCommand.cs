@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Application.Articles.Commands.CreateArticle
+namespace Blog.Application.Articles.Commands.EditArticle
 {
-    public class CreateArticleCommand : IRequest<int>
+    public class EditArticleCommand : IRequest<int>
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
         public string Image { get; set; }
