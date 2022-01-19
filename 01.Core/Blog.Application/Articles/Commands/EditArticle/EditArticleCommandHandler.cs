@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Blog.Application.Articles.Commands.CreateArticle;
 using Blog.Domain.Articles;
 using Blog.Domain.Users;
 using MediatR;
@@ -7,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Blog.Application.Articles.Commands.EditArticle

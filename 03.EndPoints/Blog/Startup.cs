@@ -94,7 +94,7 @@ namespace Blog
 
             //services.AddScoped<IClaimsTransformation, AddClaim>();
             //services.AddSingleton<IAuthorizationHandler, GoldenAuthorRequermentHandler>();
-            services.AddSingleton<IAuthorizationHandler, IsBlogForUserAuthorization>();
+            services.AddSingleton<IAuthorizationHandler, IsBlogForUserAuthorizationHandler>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

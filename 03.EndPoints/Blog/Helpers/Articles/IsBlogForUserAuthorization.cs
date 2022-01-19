@@ -13,7 +13,7 @@ namespace Blog.Helpers.Articles
     {
     }
 
-    public class IsBlogForUserAuthorization : AuthorizationHandler<BlogForUserRequirement, EditArticleCommand>
+    public class IsBlogForUserAuthorizationHandler : AuthorizationHandler<BlogForUserRequirement, EditArticleCommand>
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, BlogForUserRequirement requirement, EditArticleCommand resource)
         {

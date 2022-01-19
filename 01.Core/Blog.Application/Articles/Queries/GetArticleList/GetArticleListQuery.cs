@@ -17,7 +17,7 @@ namespace Blog.Application.Articles.Queries.GetArticleList
         public string Body { get; set; }
         public string Image { get; set; }
         public bool Status { get; set; }
-        public string UserName { get; set; } = "arash2012222@gmail.codm";
+        public string UserName { get; set; }
     }
 
     public class GetArticleListQueryHandler : RequestHandler<GetArticleListQuery, IEnumerable<GetArticleListQuery>>

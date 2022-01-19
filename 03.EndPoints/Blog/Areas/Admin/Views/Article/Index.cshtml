@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Blog.Application.Articles.Queries.GetArticleList.GetArticleListQuery>
-
+﻿@using Microsoft.AspNetCore.Authorization;
+@model IEnumerable<Blog.Application.Articles.Queries.GetArticleList.GetArticleListQuery>
+@inject IAuthorizationService _authorizationService;
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Index"; 
 }
 
 <h1>Index</h1>
@@ -44,8 +44,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                <td> 
+                    @if (_authorizationService.AuthorizeAsync(User, item, "IsBlogForUser").Result.Succeeded)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    }
                     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                 </td>
