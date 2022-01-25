@@ -1,4 +1,4 @@
-﻿using Blog.Domain.Users;
+﻿using Blog.Domain.Users.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Infrastructure.Users
+namespace Blog.Infrastructure.Users.Config
 {
     class UserConfig : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-             
+
         }
     }
 }

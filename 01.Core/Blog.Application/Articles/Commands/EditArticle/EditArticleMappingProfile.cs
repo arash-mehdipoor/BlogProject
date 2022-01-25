@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Blog.Application.Articles.Queries.GetArticleList;
-using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entitiy;
 using System;
 using System.Collections.Generic;
 using System.Linq;

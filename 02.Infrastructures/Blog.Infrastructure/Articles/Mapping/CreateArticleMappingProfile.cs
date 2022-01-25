@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
-using Blog.Domain.Articles;
+using Blog.Application.Articles.Commands.CreateArticle;
+using Blog.Domain.Articles.Entitiy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Application.Articles.Commands.CreateArticle
+namespace Blog.Infrastructure.Articles.Mapping
 {
     public class CreateArticleMappingProfile : Profile
     {

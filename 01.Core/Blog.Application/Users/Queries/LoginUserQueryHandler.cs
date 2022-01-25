@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 using Microsoft.AspNetCore.Identity;
-using Blog.Domain.Users;
+using Blog.Domain.Users.Entity;
 
 namespace Blog.Application.Users.Queries
 {

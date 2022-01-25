@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Blog.Application.Articles.Commands.EditArticle;
-using Blog.Domain.Articles;
+using Blog.Domain.Articles.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

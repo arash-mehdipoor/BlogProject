@@ -1,4 +1,5 @@
-﻿using Blog.Domain.Articles;
+﻿using Blog.Domain.Articles.Entitiy;
+using Blog.Domain.Articles.Interfaces;
 using Blog.Infrastructure.Common;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Infrastructure.Articles
+namespace Blog.Infrastructure.Articles.Services
 {
     public class ArticleRepasitory : EfRepository<Article>, IArticleRepasitory
     {

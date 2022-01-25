@@ -1,9 +1,9 @@
 ﻿using Blog.Domain.Common.Attributes;
 using Blog.Domain.Common.Entities;
-using Blog.Domain.Users;
+using Blog.Domain.Users.Entity;
 using System;
 
-namespace Blog.Domain.Articles
+namespace Blog.Domain.Articles.Entitiy
 {
     [Audit]
     public class Article : Entity

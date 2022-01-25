@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using MediatR;
 using Blog.Application.Articles.Commands.CreateArticle;
 using Microsoft.AspNetCore.Identity;
-using Blog.Domain.Users;
 using Microsoft.AspNetCore.Authorization;
 using Blog.Application.Articles.Commands.EditArticle;
 using Blog.Application.Articles.Queries.GetArticleList;
+using Blog.Domain.Users.Entity;
 
 namespace Blog.Areas.Admin.Controllers.Articles
 {

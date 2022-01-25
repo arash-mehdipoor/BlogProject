@@ -1,4 +1,4 @@
-﻿using Blog.Domain.Articles;
+﻿using Blog.Domain.Articles.Entitiy;
 using Blog.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Infrastructure.Articles
+namespace Blog.Infrastructure.Articles.Config
 {
     public class ArticleConfig : IEntityTypeConfiguration<Article>
     {

@@ -13,17 +13,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using FluentValidation.AspNetCore;
-using Blog.Domain.Users;
-using Blog.Domain.Roles;
 using Microsoft.AspNetCore.Identity;
-using Blog.Domain.Articles;
-using Blog.Infrastructure.Articles;
 using AutoMapper;
 using Blog.Application.Articles.Commands.CreateArticle;
 using Microsoft.AspNetCore.Authorization;
 using Blog.Helpers.Articles;
 using Microsoft.AspNetCore.Authentication;
 using Blog.Application.Articles.Commands.EditArticle;
+using Blog.Infrastructure.Articles.Services;
+using Blog.Domain.Articles.Interfaces;
+using Blog.Domain.Users.Entity;
+using Blog.Domain.Roles.Entity;
 
 namespace Blog
 {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using Blog.Domain.Articles;
-using Blog.Domain.Users;
+using Blog.Domain.Articles.Entitiy;
+using Blog.Domain.Articles.Interfaces;
+using Blog.Domain.Users.Entity;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

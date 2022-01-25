@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Blog.Domain.Articles;
+using Blog.Domain.Articles.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
