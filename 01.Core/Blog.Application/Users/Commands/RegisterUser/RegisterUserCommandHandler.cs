@@ -24,14 +24,8 @@ namespace Blog.Application.Users.Commands.RegisterUser
 
         protected override ResponseDto Handle(RegisterUserCommand request)
         {
-            //var user = new User
-            //{
-            //    FirstName = request.FirstName,
-            //    LastName = request.LastName,
-            //    Email = request.Email,
-            //    UserName = request.Email
-            //};
-
+            
+            request.UserName = request.Email;
             var user = _mapper.Map<User>(request);
             var result = _userManager.CreateAsync(user, request.Password).Result;
             if (result.Succeeded)

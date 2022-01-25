@@ -32,12 +32,10 @@ namespace Blog.Controllers.Accounts
         public async Task<IActionResult> Register(RegisterUserCommand registerUser)
         {
             var result = await _mediator.Send(registerUser);
-            if (!result.IsSuccess)
-            {
-                TempData["ErrorMessage"] = result.Message;
-                return View(registerUser);
-            }
-            return RedirectToAction(nameof(Login));
+            if (result.IsSuccess)
+                return RedirectToAction(nameof(Login));
+            TempData["ErrorMessage"] = result.Message;
+            return View(registerUser);
         }
 
         public IActionResult Login(string ReturnUrl = "/")

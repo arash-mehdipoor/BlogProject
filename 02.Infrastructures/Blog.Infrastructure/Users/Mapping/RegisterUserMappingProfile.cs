@@ -15,14 +15,6 @@ namespace Blog.Infrastructure.Users.Mapping
         public RegisterUserMappingProfile()
         {
             CreateMap<User, RegisterUserCommand>().ReverseMap();
-
-            //CreateMap<CatalogType, MenuItemDto>()
-            //   .ForMember(dest => dest.Name, opt =>
-            //    opt.MapFrom(src => src.Type))
-            //   .ForMember(dest => dest.ParentId, opt =>
-            //    opt.MapFrom(src => src.ParentCatalogTypeId))
-            //   .ForMember(dest => dest.SubMenu, opt =>
-            //   opt.MapFrom(src => src.SubType));
         }
     }
 }

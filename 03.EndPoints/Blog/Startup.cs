@@ -19,11 +19,11 @@ using Blog.Application.Articles.Commands.CreateArticle;
 using Microsoft.AspNetCore.Authorization;
 using Blog.Helpers.Articles;
 using Microsoft.AspNetCore.Authentication;
-using Blog.Application.Articles.Commands.EditArticle;
 using Blog.Infrastructure.Articles.Services;
 using Blog.Domain.Articles.Interfaces;
 using Blog.Domain.Users.Entity;
 using Blog.Domain.Roles.Entity;
+using Blog.Infrastructure.Articles.Mapping;
 
 namespace Blog
 {
@@ -57,6 +57,7 @@ namespace Blog
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequiredLength = 6;
+                options.User.AllowedUserNameCharacters = null; 
                 options.User.RequireUniqueEmail = true;
                 options.Lockout.MaxFailedAccessAttempts = 3;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMilliseconds(10);

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Blog.Application.Articles.Commands.EditArticle;
 using Blog.Application.Articles.Queries.GetArticleList;
 using Blog.Domain.Articles.Entitiy;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Application.Articles.Commands.EditArticle
+namespace Blog.Infrastructure.Articles.Mapping
 {
     public class EditArticleMappingProfile : Profile
     {
