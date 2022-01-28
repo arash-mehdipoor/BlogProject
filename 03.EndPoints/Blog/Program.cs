@@ -17,7 +17,7 @@ namespace Blog
             var configurationBuilder = new ConfigurationBuilder();
             configurationBuilder.AddJsonFile("appsettings.json");
             var configuretion = configurationBuilder.Build();
-            Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration() 
                 .ReadFrom.Configuration(configuretion).CreateLogger();
             try
             {

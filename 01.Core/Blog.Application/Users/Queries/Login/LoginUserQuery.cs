@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace Blog.Application.Users.Queries
+namespace Blog.Application.Users.Queries.Login
 {
     public class LoginUserQuery : IRequest<SignInResult>
     {

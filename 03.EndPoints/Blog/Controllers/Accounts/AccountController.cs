@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using Blog.Application.Users.Queries;
 using Microsoft.AspNetCore.Identity;
 using Blog.Domain.Users.Entity;
+using Blog.Application.Users.Queries.Login;
 
 namespace Blog.Controllers.Accounts
 {
@@ -29,8 +29,9 @@ namespace Blog.Controllers.Accounts
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterUserCommand registerUser)
-        {
+        { 
             var result = await _mediator.Send(registerUser);
             if (result.IsSuccess)
                 return RedirectToAction(nameof(Login));
@@ -38,16 +39,16 @@ namespace Blog.Controllers.Accounts
             return View(registerUser);
         }
 
+        [HttpGet]
         public IActionResult Login(string ReturnUrl = "/")
         {
             return View(new LoginUserQuery() { ReturnUrl = ReturnUrl });
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginUserQuery loginUser)
         {
-            if (!ModelState.IsValid)
-                return View(loginUser);
             var result = await _mediator.Send(loginUser);
             if (result.Succeeded)
                 return LocalRedirect(loginUser.ReturnUrl);
