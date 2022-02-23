@@ -27,7 +27,7 @@ namespace Blog.Application.UserClaims.Commands.CreateClaim
             Claim newClaim = new Claim(request.ClaimType, request.ClaimValue, ClaimValueTypes.String);
             var result = _userManager.AddClaimAsync(user, newClaim).Result;
             if (result.Succeeded)
-                return new ResponseDto(true, $"New claim added to user : {user.UserName}");
+                return new ResponseDto(ApplicationServiceStatus.ok, $"New claim added to user : {user.UserName}");
             else
             {
                 string messge = "";
@@ -35,7 +35,7 @@ namespace Blog.Application.UserClaims.Commands.CreateClaim
                 {
                     messge += item.Description + Environment.NewLine;
                 }
-                return new ResponseDto(false, messge);
+                return new ResponseDto(ApplicationServiceStatus.Exeption, messge);
             }
         }
     }

@@ -29,7 +29,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
             if (result.Succeeded)
             {
                 Serilog.Log.Information("A new user has been added to the website | UserName :{0},{1}", user.UserName, user.FirstName + " " + user.LastName);
-                return new ResponseDto(true, "Registration completed successfully");
+                return new ResponseDto(ApplicationServiceStatus.ok, "Registration completed successfully");
             }
             else
             {
@@ -39,7 +39,7 @@ namespace Blog.Application.Users.Commands.RegisterUser
                     messge += item.Description + Environment.NewLine;
                 }
                 Serilog.Log.Information("Failed Register / Error Message :{0}", messge);
-                return new ResponseDto(false, messge);
+                return new ResponseDto(ApplicationServiceStatus.Exeption, messge);
             }
         }
     }

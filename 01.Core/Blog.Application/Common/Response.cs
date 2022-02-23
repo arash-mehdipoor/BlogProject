@@ -8,29 +8,29 @@ namespace Blog.Application.Common
 {
     public class ResponseDto<T>
     {
-        public ResponseDto(bool IsSuccess, string Message, T Data)
+        public ResponseDto(ApplicationServiceStatus status, string Message, T Data)
         {
-            this.IsSuccess = IsSuccess;
+            this.Status = status;
             this.Message = Message;
             this.Data = Data;
         }
 
         public T Data { get; private set; }
         public string Message { get; private set; }
-        public bool IsSuccess { get; private set; }
+         public ApplicationServiceStatus Status { get; set; }
 
     }
 
 
     public class ResponseDto
     {
-        public ResponseDto(bool IsSuccess, string Message)
+        public ResponseDto(ApplicationServiceStatus status, string Message)
         {
-            this.IsSuccess = IsSuccess;
+            this.Status = status;
             this.Message = Message;
         }
         public string Message { get; private set; }
-        public bool IsSuccess { get; private set; }
+         public ApplicationServiceStatus Status { get; set; }
 
     }
 }

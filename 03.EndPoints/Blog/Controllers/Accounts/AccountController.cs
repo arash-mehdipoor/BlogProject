@@ -1,4 +1,5 @@
-﻿using Blog.Application.Users.Commands.RegisterUser;
+﻿using Blog.Application.Common;
+using Blog.Application.Users.Commands.RegisterUser;
 using Blog.Application.Users.Queries.Login;
 using Blog.Domain.Users.Entities;
 using MediatR;
@@ -30,8 +31,10 @@ namespace Blog.Controllers.Accounts
         public async Task<IActionResult> Register(RegisterUserCommand registerUser)
         {
             var result = await _mediator.Send(registerUser);
-            if (result.IsSuccess)
+
+            if (result.Status == ApplicationServiceStatus.ok)
                 return RedirectToAction(nameof(Login));
+
             TempData["ErrorMessage"] = result.Message;
             return View(registerUser);
         }
@@ -49,8 +52,10 @@ namespace Blog.Controllers.Accounts
             var result = await _mediator.Send(loginUser);
             if (result.Succeeded)
                 return LocalRedirect(loginUser.ReturnUrl);
+
             if (result.RequiresTwoFactor)
                 return RedirectToAction(nameof(TwoFactor));
+
             TempData["Message"] = "User Notfound";
             return View(loginUser);
         }
