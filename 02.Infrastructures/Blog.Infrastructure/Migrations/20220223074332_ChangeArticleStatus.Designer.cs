@@ -4,14 +4,16 @@ using Blog.Infrastructure.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Blog.Infrastructure.Migrations
 {
     [DbContext(typeof(BlogDatabaseContext))]
-    partial class BlogDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220223074332_ChangeArticleStatus")]
+    partial class ChangeArticleStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

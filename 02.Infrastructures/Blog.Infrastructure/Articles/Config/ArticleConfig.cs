@@ -1,12 +1,6 @@
-﻿using Blog.Domain.Articles.Entitiy;
-using Blog.Domain.Users;
+﻿using Blog.Domain.Articles.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Infrastructure.Articles.Config
 {

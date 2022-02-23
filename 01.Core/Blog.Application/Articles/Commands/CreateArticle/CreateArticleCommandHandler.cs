@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using Blog.Domain.Articles.Entitiy;
-using Blog.Domain.Articles.Interfaces;
-using Blog.Domain.Users.Entity;
+using Blog.Domain.Articles.Entities;
+using Blog.Domain.Articles.Repositories;
+using Blog.Domain.Users.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Blog.Application.Articles.Commands.CreateArticle

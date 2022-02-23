@@ -1,11 +1,7 @@
-﻿using Blog.Domain.Articles.Entitiy;
-using Blog.Domain.Articles.Interfaces;
+﻿using Blog.Domain.Articles.Entities;
+using Blog.Domain.Articles.Repositories;
 using Blog.Infrastructure.Common;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Infrastructure.Articles.Services
 {

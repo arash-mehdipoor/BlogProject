@@ -1,20 +1,16 @@
 ﻿using AutoMapper;
 using Blog.Application.Articles.Commands.EditArticle;
 using Blog.Application.Articles.Queries.GetArticleList;
-using Blog.Domain.Articles.Entitiy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Blog.Domain.Articles.Entities;
+using Blog.Domain.Articles.QueryResults;
 
-namespace Blog.Infrastructure.Articles.Mapping
+namespace Blog.Models.Articles.MappingProfile
 {
     public class EditArticleMappingProfile : Profile
     {
         public EditArticleMappingProfile()
         {
-            CreateMap<Article, EditArticleCommand>().ReverseMap();
+            CreateMap<Article, EditArticleQr>().ReverseMap();
             CreateMap<Article, GetArticleListQuery>().ReverseMap();
         }
     }

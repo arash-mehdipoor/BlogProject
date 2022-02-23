@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
-using Blog.Application.Articles.Commands.CreateArticle;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
+﻿using Blog.Application.Articles.Commands.CreateArticle;
 using Blog.Application.Articles.Commands.EditArticle;
+using Blog.Application.Articles.Queries.GetArticleById;
 using Blog.Application.Articles.Queries.GetArticleList;
-using Blog.Domain.Users.Entity;
+using Blog.Domain.Users.Entities;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Blog.Areas.Admin.Controllers.Articles
 {

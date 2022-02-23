@@ -1,8 +1,7 @@
-﻿using MediatR;
-using System;
+﻿using Blog.Application.Users.Queries.Login;
+using Blog.Domain.Users.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Blog.Domain.Users.Entity;
-using Blog.Application.Users.Queries.Login;
 
 namespace Blog.Application.Users.Queries
 {

@@ -1,22 +1,22 @@
 using Blog.Application.Users.Commands.RegisterUser;
+using Blog.Domain.Articles.Repositories;
+using Blog.Domain.Roles.Entities;
+using Blog.Domain.Users.Entities;
+using Blog.Helpers.Articles;
+using Blog.Infrastructure.Articles.Services;
 using Blog.Infrastructure.Common;
+using Blog.Models.Articles.MappingProfile;
+using FluentValidation.AspNetCore;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using MediatR;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-using Blog.Helpers.Articles;
-using Blog.Infrastructure.Articles.Services;
-using Blog.Domain.Articles.Interfaces;
-using Blog.Domain.Users.Entity;
-using Blog.Domain.Roles.Entity;
-using Blog.Infrastructure.Articles.Mapping;
 
 namespace Blog
 {
@@ -50,7 +50,7 @@ namespace Blog
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequiredLength = 6;
-                options.User.AllowedUserNameCharacters = null; 
+                options.User.AllowedUserNameCharacters = null;
                 options.User.RequireUniqueEmail = true;
                 options.Lockout.MaxFailedAccessAttempts = 3;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMilliseconds(10);

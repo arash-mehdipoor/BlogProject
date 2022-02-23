@@ -1,13 +1,10 @@
 ﻿using Blog.Application.Users.Commands.RegisterUser;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Blog.Application.Users.Queries.Login;
+using Blog.Domain.Users.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Blog.Domain.Users.Entity;
-using Blog.Application.Users.Queries.Login;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Blog.Controllers.Accounts
 {
@@ -31,7 +28,7 @@ namespace Blog.Controllers.Accounts
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterUserCommand registerUser)
-        { 
+        {
             var result = await _mediator.Send(registerUser);
             if (result.IsSuccess)
                 return RedirectToAction(nameof(Login));

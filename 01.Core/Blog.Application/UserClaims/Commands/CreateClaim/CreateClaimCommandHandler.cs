@@ -1,10 +1,9 @@
 ﻿using Blog.Application.Common;
-using Blog.Domain.Users.Entity;
+using Blog.Domain.Users.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Blog.Application.UserClaims.Commands.CreateClaim

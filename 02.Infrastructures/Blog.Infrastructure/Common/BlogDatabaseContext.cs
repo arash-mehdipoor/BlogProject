@@ -1,7 +1,7 @@
-﻿using Blog.Domain.Articles.Entitiy;
+﻿using Blog.Domain.Articles.Entities;
 using Blog.Domain.Common.Attributes;
-using Blog.Domain.Roles.Entity;
-using Blog.Domain.Users.Entity;
+using Blog.Domain.Roles.Entities;
+using Blog.Domain.Users.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;

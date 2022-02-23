@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using Blog.Application.Common;
-using Blog.Domain.Users.Entity;
+using Blog.Domain.Users.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Serilog.Events;
 using System;
-using System.Collections.Generic;
 
 namespace Blog.Application.Users.Commands.RegisterUser
 {

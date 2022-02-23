@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Domain.Users.Entity
+namespace Blog.Domain.Users.Entities
 {
     public class User : IdentityUser
     {
